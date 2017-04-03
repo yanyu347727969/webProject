@@ -1,79 +1,86 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <title>我参与的拍卖</title>
-    <link rel="stylesheet" href="/goodsAuction/css/bootstrap.min.css" type="text/css"></link>
-	<link rel="stylesheet" href="/goodsAuction/css/10010_com.css" type="text/css"></link>
-	<script type="text/javascript" src="/goodsAuction/js/jquery-2.1.3.min.js"></script>
-  	<script type="text/javascript" src="/goodsAuction/js/bootstrap.min.js"></script>
-  </head>
-  
-  <body>
-  	<div class="container">
-            <div class="col-sm-6" style="margin-left: 25%">
-                <form role="form">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input id="keyword" type="text" class="form-control">
-                            <a href="javascript:void(0)" class="input-group-addon" id="search">搜索</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-    </div>
-    <div class="selectNumberScreen">
+<head>
+<title>我参与的拍卖</title>
+<link rel="stylesheet" href="/goodsAuction/css/bootstrap.min.css"
+	type="text/css"></link>
+<link rel="stylesheet" href="/goodsAuction/css/10010_com.css"
+	type="text/css"></link>
+<script type="text/javascript"
+	src="/goodsAuction/js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="/goodsAuction/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="col-sm-6" style="margin-left: 25%">
+			<form role="form">
+				<div class="form-group">
+					<div class="input-group">
+						<input id="keyword" type="text" class="form-control"> <a
+							href="javascript:void(0)" class="input-group-addon" id="search">搜索</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="selectNumberScreen">
 		<div id="selectList" class="screenBox screenBackground">
 			<dl class=" listIndex" attr="terminal_activity_s">
-			  <dt>物品类别:</dt>
-				  <dd>
-				  	<c:forEach items="${kinds}" var="kind">
-				  		<a href="javascript:void(0)" name="${kind.kind_id}">${kind.kind_name}</a>
-				  	</c:forEach>
-				  </dd>
+				<dt>物品类别:</dt>
+				<dd>
+					<c:forEach items="${kinds}" var="kind">
+						<a href="javascript:void(0)" name="${kind.kind_id}">${kind.kind_name}</a>
+					</c:forEach>
+				</dd>
 			</dl>
 			<dl class="noBorder listIndex" attr="terminal_sellFeature_s">
-			  <dt>物品状态:</dt>
-			  <dd>
-				  	<c:forEach items="${states}" var="state">
-				  		<a href="javascript:void(0)" name="${state.state_id}">${state.state_name}</a>
-				  	</c:forEach>
-				  </dd>
+				<dt>物品状态:</dt>
+				<dd>
+					<c:forEach items="${states}" var="state">
+						<a href="javascript:void(0)" name="${state.state_id}">${state.state_name}</a>
+					</c:forEach>
+				</dd>
 			</dl>
 		</div>
 		<div class="hasBeenSelected">
 			<dl>
-			  <dt>您已选择:</dt>
-			  <dd style="DISPLAY: none" class=clearDd>
-			  <div class=clearList></div>
-			  <div style="DISPLAY: none" class="eliminateCriteria">清除筛选条件</div>
+				<dt>您已选择:</dt>
+				<dd style="DISPLAY: none" class=clearDd>
+					<div class=clearList></div>
+					<div style="DISPLAY: none" class="eliminateCriteria">清除筛选条件</div>
 			</dl>
 		</div>
 	</div>
-    <div class="container">
-        <div id="item" class="row show-grid">
-        </div>
-    </div>
-    <div class="container" align="center">
-    	<table>
-    		<tr>
-    			<td>
-    				<ul class="pagination pagination-sm">
+	<div class="container">
+		<div id="item" class="row show-grid"></div>
+	</div>
+	<div class="container" align="center">
+		<table>
+			<tr>
+				<td>
+					<ul class="pagination pagination-sm">
 					</ul>
-    			</td>
-    			<td style="color: gray;padding-left: 15px;font-size:small;">
-    				<span id=totalPage></span>
-    			</td>
-    			<td style="color: gray;padding-left: 10px;font-size:small;padding-top: 3px">
-    				<span>到第&nbsp</span><input id="pageNo" type="text" style="width: 50px;height: 25px" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" onafterpaste="this.value=this.value.replace(/[^\d]/g,'')">
-    				<span>页&nbsp</span><button id="jumpPage" class="btn btn-default btn-sm">确定</button>
-    			</td>
-    		</tr>
-    	</table>
-     </div>
-  </body>
- <script type="text/javascript">
+				</td>
+				<td style="color: gray; padding-left: 15px; font-size: small;">
+					<span id=totalPage></span>
+				</td>
+				<td
+					style="color: gray; padding-left: 10px; font-size: small; padding-top: 3px">
+					<span>到第&nbsp</span><input id="pageNo" type="text"
+					style="width: 50px; height: 25px"
+					onkeyup="this.value=this.value.replace(/[^\d]/g,'')"
+					onafterpaste="this.value=this.value.replace(/[^\d]/g,'')">
+					<span>页&nbsp</span>
+				<button id="jumpPage" class="btn btn-default btn-sm">确定</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+<script type="text/javascript">
     var dlNum  =$("#selectList").find("dl");
     for (var i = 0; i < dlNum.length; i++) {
         $(".hasBeenSelected .clearList").append("<div class=\"selectedInfor selectedShow\" style=\"display:none\"><span></span><label></label><em></em></div>");
@@ -253,4 +260,4 @@
         });
     });
 </script>
- </html>
+</html>

@@ -1,13 +1,15 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-  <link rel="stylesheet" href="/goodsAuction/css/bootstrap.min.css" type="text/css"></link>
-	<script type="text/javascript" src="/goodsAuction/js/jquery-2.1.3.min.js"></script>
-  	<script type="text/javascript" src="/goodsAuction/js/bootstrap.min.js"></script>
- 	<script type="text/javascript">
+<head>
+<link rel="stylesheet" href="/goodsAuction/css/bootstrap.min.css"
+	type="text/css"></link>
+<script type="text/javascript"
+	src="/goodsAuction/js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="/goodsAuction/js/bootstrap.min.js"></script>
+<script type="text/javascript">
         function choose(tagA){
             var file = $(tagA).parents("tr").find("input[type='file']");
             file.click();
@@ -62,60 +64,69 @@
             });
         });
     </script>
-  </head>
-  
-  <body>
-  	<nav class="navbar navbar-default">
-	    <div class="container-fluid">
-	        <div class="navbar-header">
-	            <a class="navbar-brand" href="/goodsAuction/d/homepageAction"><span class="text-success">四川师范大学校园二手物品拍卖网</span></a>
-	        </div>
-	        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="/goodsAuction/jsp/item/addedItem.jsp">发布拍卖物品</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-		            <c:if test="${!empty user}">
-		  				<li><a href="javascript:void(0)">欢迎您:${user.username}</a></li>
-		  				<li><a href="/goodsAuction/d/safeExitAction">安全退出</a></li>
-		  			</c:if>
-		  			<c:if test="${empty user}">
-		  				<li><a href="/goodsAuction/jsp/user/login.jsp">亲,请登录</a></li>
-                    	<li><a href="/goodsAuction/jsp/user/register.jsp">免费注册</a></li>
-		  			</c:if>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-	    </div><!-- /.container-fluid -->
-	</nav>
-	  <div class="container">
-	    <div class="container col-sm-9">
-	        <form action="/goodsAuction/p/saveImageAction" class="form-horizontal" role="form"  method="post" enctype="multipart/form-data" id="formId">
-	            <input type="hidden" name="item_id" value="${param.item_id}">
-	            <table class="table">
-	                <thead>
-	                    <th>
-	                        <td  class="h1">上传拍卖物品图片</td>
-	                        <td colspan="2"><input class="pull-right btn btn-primary" type="button" id="add" value="增加图片" onclick="addImage()"/></td>
-	                    </th>
-	                </thead>
-	                <tbody>
-	                    <tr id="lasttr">
-	                        <td colspan="3"><input class="btn btn-block btn-primary pull-right" type="submit" value="提交"></td>
-	                    </tr>
-	                </tbody>
-	            </table>
-	        </form>
-	    </div>
+</head>
+
+<body>
+	<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/goodsAuction/d/homepageAction"><span
+				class="text-success">四川师范大学校园二手物品拍卖网</span></a>
+		</div>
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li><a href="/goodsAuction/jsp/item/addedItem.jsp">发布拍卖物品</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<c:if test="${!empty user}">
+					<li><a href="javascript:void(0)">欢迎您:${user.username}</a></li>
+					<li><a href="/goodsAuction/d/safeExitAction">安全退出</a></li>
+				</c:if>
+				<c:if test="${empty user}">
+					<li><a href="/goodsAuction/jsp/user/login.jsp">亲,请登录</a></li>
+					<li><a href="/goodsAuction/jsp/user/register.jsp">免费注册</a></li>
+				</c:if>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-expanded="false">Dropdown
+						<span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+					</ul></li>
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
 	</div>
-  </body>
+	<!-- /.container-fluid --> </nav>
+	<div class="container">
+		<div class="container col-sm-9">
+			<form action="/goodsAuction/p/saveImageAction"
+				class="form-horizontal" role="form" method="post"
+				enctype="multipart/form-data" id="formId">
+				<input type="hidden" name="item_id" value="${param.item_id}">
+				<table class="table">
+					<thead>
+						<th>
+						<td class="h1">上传拍卖物品图片</td>
+						<td colspan="2"><input class="pull-right btn btn-primary"
+							type="button" id="add" value="增加图片" onclick="addImage()" /></td>
+						</th>
+					</thead>
+					<tbody>
+						<tr id="lasttr">
+							<td colspan="3"><input
+								class="btn btn-block btn-primary pull-right" type="submit"
+								value="提交"></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+	</div>
+</body>
 </html>

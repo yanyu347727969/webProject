@@ -10,7 +10,7 @@
 		</id>
 		<property name="kind_desc" column="kind_desc"></property>
 		<property name="kind_name" column="kind_name"></property>
-		
+
 	</class>
 
 </hibernate-mapping>

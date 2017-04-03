@@ -2,13 +2,13 @@
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    
-    <title>我发布的拍卖物品</title>
+<head>
 
-  </head>
-  
-  <body>
-    <h1>我发布的拍卖物品</h1>
-  </body>
+<title>我发布的拍卖物品</title>
+
+</head>
+
+<body>
+	<h1>我发布的拍卖物品</h1>
+</body>
 </html>

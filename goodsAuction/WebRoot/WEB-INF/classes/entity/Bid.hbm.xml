@@ -10,10 +10,10 @@
 		</id>
 		<property name="bid_price" column="bid_price"></property>
 		<property name="bid_date" column="bid_date"></property>
-		
+
 		<many-to-one name="user" column="user_id" lazy="false"></many-to-one>
 		<many-to-one name="item" column="item_id" lazy="false"></many-to-one>
-		
+
 	</class>
 
 </hibernate-mapping>

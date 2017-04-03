@@ -17,7 +17,7 @@
 		<property name="second_max_price" column="second_max_price"></property>
 		<property name="imagePath" column="imagePath"></property>
 		<property name="address" column="address"></property>
-		
+
 		<many-to-one name="winner_user" column="winner_id" lazy="false"></many-to-one>
 		<many-to-one name="kind" column="kind_id" lazy="false"></many-to-one>
 		<many-to-one name="owner_user" column="owner_id" lazy="false"></many-to-one>

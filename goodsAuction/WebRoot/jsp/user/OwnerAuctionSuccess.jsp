@@ -2,12 +2,12 @@
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <title>我竞拍成功的物品</title>
+<head>
+<title>我竞拍成功的物品</title>
 
-  </head>
-  
-  <body>
-    <h1>我竞拍成功的物品</h1>
-  </body>
+</head>
+
+<body>
+	<h1>我竞拍成功的物品</h1>
+</body>
 </html>

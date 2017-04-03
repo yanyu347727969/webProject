@@ -6,33 +6,34 @@
 	<constant name="struts.devMode" value="true"></constant>
 
 	<package name="pag1" extends="struts-default" namespace="/d">
-		
+
 		<!-- 登录的action -->
 		<action name="loginAction" class="action.LoginAction" method="login">
 			<result name="success" type="redirect">/d/homepageAction</result>
 			<result name="error" type="redirect">/jsp/user/login.jsp</result>
 		</action>
-		
+
 		<!-- 生成主页的action -->
 		<action name="homepageAction" class="action.HomepageAction">
 			<result name="success">/jsp/other/homepage.jsp</result>
 		</action>
-		
+
 		<!-- 验证码生成的action -->
-		<action name="captchaAction" class="action.CaptchaAction" method="captcha">
+		<action name="captchaAction" class="action.CaptchaAction"
+			method="captcha">
 		</action>
-		
+
 		<!-- 安全退出的action -->
 		<action name="safeExitAction" class="action.SafeExitAction">
 			<result name="success" type="redirect">/jsp/user/login.jsp</result>
 		</action>
-		
+
 		<!-- 注册的action -->
 		<action name="registerAction" class="action.RegisterAction">
 			<result name="success" type="redirect">/jsp/user/login.jsp</result>
 			<result name="error" type="redirect">/jsp/user/register.jsp</result>
 		</action>
-		
+
 		<!-- 验证验证码的action -->
 		<action name="captchaVerificationAction" class="action.CaptchaVerificationAction">
 		</action>
@@ -46,11 +47,11 @@
 			</result>
 			<result name="error" type="redirect">/jsp/item/addedItem</result>
 		</action>
-		
+
 		<!-- 加载物品类别的action -->
 		<action name="loadKindAction" class="action.LoadKindAction">
 		</action>
-		
+
 		<!-- 保存图片的action -->
 		<action name="saveImageAction" class="action.SaveImageAction">
 			<result name="success" type="redirect">
@@ -59,23 +60,23 @@
 			</result>
 			<result name="error" type="redirect">/jsp/item/uploadError.jsp</result>
 		</action>
-		
+
 		<!-- 加载物品图片的action -->
 		<action name="itemImageAction" class="action.ItemImageAction">
 		</action>
-		
+
 		<!-- 加载商品详细信息action -->
 		<action name="itemDetailAction" class="action.ItemDetailAction">
 			<result name="success">/jsp/item/itemDetail.jsp</result>
 		</action>
-		
+
 		<!-- 物品竞拍的action -->
 		<action name="itemAuctionAction" class="action.ItemAuctionAction">
 			<result name="success">/jsp/bid/bidSuccess.jsp</result>
 			<result name="error">/jsp/bid/bidError.jsp</result>
 		</action>
 	</package>
-	
+
 	<package name="pag3" extends="struts-default" namespace="/s">
 		<!-- 查询物品的action -->
 		<action name="searchItemsAction" class="action.SearchItemsAction">
@@ -89,10 +90,11 @@
 	</package>
 	<package name="pag4" extends="struts-default" namespace="/owner">
 		<!-- 用于修改个人信息的action -->
-		<action name="personalInformationUpdateAction" class="action.ownerCentre.PersonalInformationUpdateAction">
+		<action name="personalInformationUpdateAction"
+			class="action.ownerCentre.PersonalInformationUpdateAction">
 		</action>
 	</package>
-	
+
 	<package name="pag5" extends="struts-default" namespace="/admin">
 		<!-- 增加物品种类的action -->
 		<action name="addItemKindAction" class="action.admin.AddItemKindAction">

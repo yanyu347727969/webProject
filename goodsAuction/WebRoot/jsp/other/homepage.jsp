@@ -1,167 +1,182 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-  	<meta http-equiv=”Content-Type” content=”text/html; charset=utf-8>
-    <title>四川师范大学校园二手物品拍卖网</title>
-    <link rel="stylesheet" href="/goodsAuction/css/bootstrap.min.css" type="text/css"></link>
-    <link rel="stylesheet" href="/goodsAuction/css/10010_com.css" type="text/css"></link>
-    <script type="text/javascript" src="/goodsAuction/js/jquery-2.1.3.min.js"></script>
-  	<script type="text/javascript" src="/goodsAuction/js/bootstrap.min.js"></script>
-  </head>
-  
-  <body style="position: absolute;top: 0;left: 0;">
-  	<nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/goodsAuction/d/homepageAction">四川师范大学校园二手物品拍卖网</a>
-            </div>
+<head>
+<meta http-equiv=”Content-Type” content=”text/html; charset=utf-8>
+<title>四川师范大学校园二手物品拍卖网</title>
+<link rel="stylesheet" href="/goodsAuction/css/bootstrap.min.css"
+	type="text/css"></link>
+<link rel="stylesheet" href="/goodsAuction/css/10010_com.css"
+	type="text/css"></link>
+<script type="text/javascript"
+	src="/goodsAuction/js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="/goodsAuction/js/bootstrap.min.js"></script>
+</head>
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a id="addedItem" href="/goodsAuction/jsp/item/addedItem.jsp">发布拍卖物品</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-		            <c:if test="${!empty user}">
-		  				<li><a href="/goodsAuction/jsp/user/individualCenter.jsp">欢迎您:${user.username}</a></li>
-		  				<li><a href="/goodsAuction/d/safeExitAction">安全退出</a></li>
-		  			</c:if>
-		  			<c:if test="${empty user}">
-		  				<li><a id="a_login" href="/goodsAuction/jsp/user/login.jsp">亲,请登录</a></li>
-                    	<li><a id="a_register" href="/goodsAuction/jsp/user/register.jsp">免费注册</a></li>
-		  			</c:if>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">管理员 <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="/goodsAuction/jsp/kind/addItemKind.jsp">发布物品类别</a></li>
-                            <li><a href="/goodsAuction/jsp/state/addItemState.jsp">发布物品状态</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
-    <div class="container">
-	    <div class="col-sm-6" style="margin-left: 25%">
-	        <form role="form">
-	            <div class="form-group">
-	                <div class="input-group">
-	                    <input id="keyword" type="text" class="form-control">
-	                    <a href="javascript:void(0)" class="input-group-addon" id="search">搜索</a>
-	                </div>
-	            </div>
-	        </form>
-	    </div>
-    </div>
-    
-    <div class="selectNumberScreen">
+<body style="position: absolute; top: 0; left: 0;">
+	<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/goodsAuction/d/homepageAction">四川师范大学校园二手物品拍卖网</a>
+		</div>
+
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li><a id="addedItem"
+					href="/goodsAuction/jsp/item/addedItem.jsp">发布拍卖物品</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<c:if test="${!empty user}">
+					<li><a href="/goodsAuction/jsp/user/individualCenter.jsp">欢迎您:${user.username}</a></li>
+					<li><a href="/goodsAuction/d/safeExitAction">安全退出</a></li>
+				</c:if>
+				<c:if test="${empty user}">
+					<li><a id="a_login" href="/goodsAuction/jsp/user/login.jsp">亲,请登录</a></li>
+					<li><a id="a_register"
+						href="/goodsAuction/jsp/user/register.jsp">免费注册</a></li>
+				</c:if>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-expanded="false">管理员
+						<span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="/goodsAuction/jsp/kind/addItemKind.jsp">发布物品类别</a></li>
+						<li><a href="/goodsAuction/jsp/state/addItemState.jsp">发布物品状态</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+					</ul></li>
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	<!-- /.container-fluid --> </nav>
+	<div class="container">
+		<div class="col-sm-6" style="margin-left: 25%">
+			<form role="form">
+				<div class="form-group">
+					<div class="input-group">
+						<input id="keyword" type="text" class="form-control"> <a
+							href="javascript:void(0)" class="input-group-addon" id="search">搜索</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="selectNumberScreen">
 		<div id="selectList" class="screenBox screenBackground">
 			<dl class=" listIndex" attr="terminal_activity_s">
-			  <dt>物品类别:</dt>
-				  <dd>
-				  	<c:forEach items="${kinds}" var="kind">
-				  		<a href="javascript:void(0)" name="${kind.kind_id}">${kind.kind_name}</a>
-				  	</c:forEach>
-				  </dd>
+				<dt>物品类别:</dt>
+				<dd>
+					<c:forEach items="${kinds}" var="kind">
+						<a href="javascript:void(0)" name="${kind.kind_id}">${kind.kind_name}</a>
+					</c:forEach>
+				</dd>
 			</dl>
 			<dl class="noBorder listIndex" attr="terminal_sellFeature_s">
-			  <dt>物品状态:</dt>
-			  <dd>
-				  	<c:forEach items="${states}" var="state">
-				  		<a href="javascript:void(0)" name="${state.state_id}">${state.state_name}</a>
-				  	</c:forEach>
-				  </dd>
+				<dt>物品状态:</dt>
+				<dd>
+					<c:forEach items="${states}" var="state">
+						<a href="javascript:void(0)" name="${state.state_id}">${state.state_name}</a>
+					</c:forEach>
+				</dd>
 			</dl>
 		</div>
 		<div class="hasBeenSelected">
 			<dl>
-			  <dt>您已选择:</dt>
-			  <dd style="DISPLAY: none" class=clearDd>
-			  <div class=clearList></div>
-			  <div style="DISPLAY: none" class="eliminateCriteria">清除筛选条件</div>
+				<dt>您已选择:</dt>
+				<dd style="DISPLAY: none" class=clearDd>
+					<div class=clearList></div>
+					<div style="DISPLAY: none" class="eliminateCriteria">清除筛选条件</div>
 			</dl>
 		</div>
 	</div>
-    <div class="container">
-        <div id="item" class="row show-grid">
-        </div>
-    </div>
-    <div class="container" align="center">
-    	<table>
-    		<tr>
-    			<td>
-    				<ul class="pagination pagination-sm">
+	<div class="container">
+		<div id="item" class="row show-grid"></div>
+	</div>
+	<div class="container" align="center">
+		<table>
+			<tr>
+				<td>
+					<ul class="pagination pagination-sm">
 					</ul>
-    			</td>
-    			<td style="color: gray;padding-left: 15px;font-size:small;">
-    				<span id=totalPage></span>
-    			</td>
-    			<td style="color: gray;padding-left: 10px;font-size:small;padding-top: 3px">
-    				<span>到第&nbsp</span><input id="pageNo" type="text" style="width: 50px;height: 25px" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" onafterpaste="this.value=this.value.replace(/[^\d]/g,'')">
-    				<span>页&nbsp</span><button id="jumpPage" class="btn btn-default btn-sm">确定</button>
-    			</td>
-    		</tr>
-    	</table>
-     </div>
-     
-     <!-- 登录的模态框 -->
-     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
-	    <div class="modal-dialog">
-	        <div class="modal-content">
-	            <div class="modal-header">
-	                <button type="button" class="close"
-	                        data-dismiss="modal" aria-hidden="true">
-	                    &times;
-	                </button>
-	                <h4 class="modal-title" id="myModalLabel">
-	                    	你尚未登录
-	                </h4>
-	            </div>
-	            <div class="modal-body">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <div class="col-sm-10">
-                                <span class="h1">登录</span>
-                            </div>
-                            <div class="col-sm-2">
-                                <a href="/goodsAuction/jsp/user/register.jsp" style="color: red">免费注册</a>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <input name="username" id="username" type="text" class="form-control" placeholder="用户名">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <input  name="userpass" id="password" type="password" class="form-control" placeholder="密码">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-8">
-                                <input  name="captcha" id="captcha" type="text" class="form-control" placeholder="验证码">
-                            </div>
-                            <div class="col-sm-4">
-                                <img  src="/goodsAuction/d/captchaAction" id="ccaptchaImage" height="35" width="100">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <a id="button_login" class="btn btn-block btn-primary">登录</a>
-                            </div>
-                        </div>
-                    </form>
-	            </div>
-	        </div><!-- /.modal-content -->
-	    </div><!-- /.modal -->
-     
-  </body>
-  <script type="text/javascript">
+				</td>
+				<td style="color: gray; padding-left: 15px; font-size: small;">
+					<span id=totalPage></span>
+				</td>
+				<td
+					style="color: gray; padding-left: 10px; font-size: small; padding-top: 3px">
+					<span>到第&nbsp</span><input id="pageNo" type="text"
+					style="width: 50px; height: 25px"
+					onkeyup="this.value=this.value.replace(/[^\d]/g,'')"
+					onafterpaste="this.value=this.value.replace(/[^\d]/g,'')">
+					<span>页&nbsp</span>
+				<button id="jumpPage" class="btn btn-default btn-sm">确定</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<!-- 登录的模态框 -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">你尚未登录</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<div class="col-sm-10">
+								<span class="h1">登录</span>
+							</div>
+							<div class="col-sm-2">
+								<a href="/goodsAuction/jsp/user/register.jsp" style="color: red">免费注册</a>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<input name="username" id="username" type="text"
+									class="form-control" placeholder="用户名">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<input name="userpass" id="password" type="password"
+									class="form-control" placeholder="密码">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-8">
+								<input name="captcha" id="captcha" type="text"
+									class="form-control" placeholder="验证码">
+							</div>
+							<div class="col-sm-4">
+								<img src="/goodsAuction/d/captchaAction" id="ccaptchaImage"
+									height="35" width="100">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<a id="button_login" class="btn btn-block btn-primary">登录</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+</body>
+<script type="text/javascript">
     var dlNum  =$("#selectList").find("dl");
     for (var i = 0; i < dlNum.length; i++) {
         $(".hasBeenSelected .clearList").append("<div class=\"selectedInfor selectedShow\" style=\"display:none\"><span></span><label></label><em></em></div>");
