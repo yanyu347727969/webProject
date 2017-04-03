@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+
+	<class name="entity.Kind" table="kind">
+		<id name="kind_id" column="kind_id">
+			<generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+				<param name="sequence_name">kind_seq</param>
+			</generator>
+		</id>
+		<property name="kind_desc" column="kind_desc"></property>
+		<property name="kind_name" column="kind_name"></property>
+		
+	</class>
+
+</hibernate-mapping>

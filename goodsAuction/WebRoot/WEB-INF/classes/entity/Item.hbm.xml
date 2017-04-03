@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+
+	<class name="entity.Item" table="item">
+		<id name="item_id" column="item_id">
+			<generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+				<param name="sequence_name">item_seq</param>
+			</generator>
+		</id>
+		<property name="addtime" column="addtime"></property>
+		<property name="endtime" column="endtime"></property>
+		<property name="init_price" column="init_price"></property>
+		<property name="item_desc" column="item_desc"></property>
+		<property name="item_name" column="item_name"></property>
+		<property name="max_price" column="max_price"></property>
+		<property name="second_max_price" column="second_max_price"></property>
+		<property name="imagePath" column="imagePath"></property>
+		<property name="address" column="address"></property>
+		
+		<many-to-one name="winner_user" column="winner_id" lazy="false"></many-to-one>
+		<many-to-one name="kind" column="kind_id" lazy="false"></many-to-one>
+		<many-to-one name="owner_user" column="owner_id" lazy="false"></many-to-one>
+		<many-to-one name="state" column="state_id" lazy="false"></many-to-one>
+	</class>
+
+</hibernate-mapping>

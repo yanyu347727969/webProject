@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="goodsAuction"
+  id="myeclipse.1429611559703"
+  context-root="/goodsAuction"
+  j2ee-spec="5.0"
+  archive="goodsAuction.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+
+	<class name="entity.State" table="state">
+		<id name="state_id" column="state_id">
+			<generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+				<param name="sequence_name">state_seq</param>
+			</generator>
+		</id>
+		<property name="state_name" column="state_name"></property>
+	</class>
+
+</hibernate-mapping>

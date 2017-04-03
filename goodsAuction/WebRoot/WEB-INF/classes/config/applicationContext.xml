@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation=
+	"http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+	
+	<!-- 引入Properties配置文件 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:config/db.properties"></property>
+	</bean>
+	
+	<!-- 配置dataSource -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="${db.driver}"></property>
+		<property name="jdbcUrl" value="${db.url}"></property>
+		<property name="user" value="${db.username}"></property>
+		<property name="password" value="${db.password}"></property>
+		<property name="maxPoolSize" value="5"></property>
+		<property name="minPoolSize" value="1"></property>
+	</bean>
+	
+	<!-- 管理SessionFactory  -通过一个SessionFactory工厂类来创建 -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<!-- 1) 获取数据源 -->
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- 2) 配置hibernate中的属性 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="javax.persistence.validation.mode">none</prop>
+				<prop key="hibernate.id.new_generator_mappings">true</prop>
+				<prop key="hibernate.id.optimizer.pooled.prefer_lo">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		<!-- 映射文件的位置  -->
+		<property name="mappingDirectoryLocations" value="classpath:entity"></property>
+	</bean>
+	
+	<!-- Dao -->
+	<bean id="bidDao" class="dao.impl.BidDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="itemDao" class="dao.impl.ItemDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="kindDao" class="dao.impl.KindDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="stateDao" class="dao.impl.StateDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="userDao" class="dao.impl.UserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- Service -->
+	<bean id="userService" class="service.impl.UserServiceImpl">
+		<property name="bidDao" ref="bidDao"></property>
+		<property name="itemDao" ref="itemDao"></property>
+		<property name="kindDao" ref="kindDao"></property>
+		<property name="stateDao" ref="stateDao"></property>
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<bean id="bidService" class="service.impl.BidServiceImpl">
+		<property name="bidDao" ref="bidDao"></property>
+		<property name="itemDao" ref="itemDao"></property>
+		<property name="kindDao" ref="kindDao"></property>
+		<property name="stateDao" ref="stateDao"></property>
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<bean id="itemService" class="service.impl.ItemServiceImpl">
+		<property name="bidDao" ref="bidDao"></property>
+		<property name="itemDao" ref="itemDao"></property>
+		<property name="kindDao" ref="kindDao"></property>
+		<property name="stateDao" ref="stateDao"></property>
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<bean id="kindService" class="service.impl.KindServiceImpl">
+		<property name="bidDao" ref="bidDao"></property>
+		<property name="itemDao" ref="itemDao"></property>
+		<property name="kindDao" ref="kindDao"></property>
+		<property name="stateDao" ref="stateDao"></property>
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<bean id="stateService" class="service.impl.StateServiceImpl">
+		<property name="bidDao" ref="bidDao"></property>
+		<property name="itemDao" ref="itemDao"></property>
+		<property name="kindDao" ref="kindDao"></property>
+		<property name="stateDao" ref="stateDao"></property>
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	
+	<!-- filter -->
+	<bean id="itemStateUpdateFilter" class="filter.ItemStateUpdateFilter">
+		<property name="itemService" ref="itemService"></property>
+		<property name="stateService" ref="stateService"></property>
+		<property name="bidService" ref="bidService"></property>
+	</bean>
+	<bean id="loginVerificationFilter" class="filter.LoginVerificationFilter">
+	</bean>
+	
+	<!-- 事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 事务通知类 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED"/>
+			<tx:method name="delete*" propagation="REQUIRED"/>
+			<tx:method name="find*" propagation="SUPPORTS" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<!-- 定义切入点 -->
+		<aop:pointcut expression="execution(* service.impl.*.*(..))" id="pc1"/>
+		<!-- 定义切面 -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pc1"/>
+	</aop:config>
+	
+	<!-- action struts2中的action必须是多例的 -->	
+	<bean id="loginAction" class="action.LoginAction" scope="prototype">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<bean id="registerAction" class="action.RegisterAction" scope="prototype">
+		<property name="userService" ref="userService"></property>	
+	</bean>
+	
+	
+</beans>

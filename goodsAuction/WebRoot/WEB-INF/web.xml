@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app 
+	version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<!-- 此监听器会在应用程序启动时创建spring容器, 放入application作用域
+  	   	在应用程序停止时关闭spring容器
+  	-->
+	<listener>
+	  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  	
+	  	<!-- 默认位置 WEB-INF/applicationContext.xml -->
+  	</listener>
+  	<listener>  
+      <listener-class>listener.ApplicationtListener</listener-class>  
+  </listener>
+  	
+	 <!-- 定义spring配置文件的位置 -->
+	 <context-param>
+	  	<param-name>contextConfigLocation</param-name>
+	  	<param-value>classpath:config/applicationContext.xml</param-value>
+	 </context-param>
+	 
+	 <!--  登录验证的过滤器 -->
+	 <filter>
+        <filter-name>DelegatingFilterProxy2</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetBeanName</param-name>
+            <param-value>loginVerificationFilter</param-value>
+        </init-param>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>DelegatingFilterProxy2</filter-name>
+        <url-pattern>/p/addedItemAction</url-pattern>
+        <url-pattern>/p/saveImageAction</url-pattern>
+        <url-pattern>/p/itemAuctionAction</url-pattern>
+        <url-pattern>/jsp/user/individualCenter.jsp</url-pattern>
+        <url-pattern>/jsp/item/addedItem.jsp</url-pattern>
+        <url-pattern>/jsp/item/uploadImage.jsp</url-pattern>
+    </filter-mapping>
+	<!--  更新物品状态的过滤器 -->
+	 <filter>
+        <filter-name>DelegatingFilterProxy</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetBeanName</param-name>
+            <param-value>itemStateUpdateFilter</param-value>
+        </init-param>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>DelegatingFilterProxy</filter-name>
+        <url-pattern>/d/homepageAction</url-pattern>
+        <url-pattern>/p/itemAuctionAction</url-pattern>
+        <url-pattern>/p/itemDetailAction</url-pattern>
+    </filter-mapping>
+	
+	 <!-- struts2 的前控制器 -->
+	 <filter>
+	  	<filter-name>struts2</filter-name>
+	  	<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	 </filter>
+	 <filter-mapping>
+	  	<filter-name>struts2</filter-name>
+	  	<url-pattern>/*</url-pattern>
+	 </filter-mapping>
+
+</web-app>
